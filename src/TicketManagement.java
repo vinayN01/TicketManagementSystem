@@ -6,6 +6,7 @@ import java.util.Scanner;
 public class TicketManagement {
     public static void main(String[] args) {
         try {
+            // @Code_Review: Better to make these strings as variables instead of hardcoding
             Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/ticket_system", "root", "Vinayreddy@1234");
             Scanner scanner = new Scanner(System.in);
 
@@ -44,6 +45,7 @@ public class TicketManagement {
     }
 
     private static void registerUser(Connection connection, Scanner scanner) {
+        // @Code_Review: Instead of using multiple prints give a multi line string in a single print
         System.out.println("Select your role:");
         System.out.println("1. User");
         System.out.println("2. Ticket Resolver");
@@ -51,6 +53,7 @@ public class TicketManagement {
         int roleChoice = scanner.nextInt();
         scanner.nextLine(); // Consume the newline character
 
+        // @Code_Review: Create an enum to hold user roles instead of numbers. will be helpful when adding new roles
         if (roleChoice != 1 && roleChoice != 2) {
             System.out.println("Invalid role selection. Exiting.");
             return;

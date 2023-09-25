@@ -2,6 +2,7 @@ import java.util.*;
 import java.sql.*;
 class UserManagement {
     private Connection connection;
+    // @Code_Review: What is the use of keeping scanner as instance varible, better create and when needed
     private Scanner scanner;
     private String username;
 
@@ -44,10 +45,10 @@ class UserManagement {
         try {
             TicketCreds ticketcreds = new TicketCreds(connection);
     
-
+            // @Code_Review: what if productType given is 3??
             String product = (productType == 1) ? "Electronics" : "Appliances";
     
-
+            // @Code_Review: what is the use of zero here and null?
             Ticket ticket = new Ticket(0, username, description, "open", null, product);
     
 

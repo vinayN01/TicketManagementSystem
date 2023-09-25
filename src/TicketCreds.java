@@ -1,6 +1,6 @@
 import java.sql.*;
 import java.util.*;
-
+// @Code_Review: Format code properly, Use prettier extension
 class TicketCreds {
     private Connection connection;
 public  TicketCreds(Connection connection){
@@ -68,6 +68,7 @@ public List<Ticket> getTicketsByUser(String user) throws SQLException{
 }
 public List<Ticket> getOpenTickets() throws SQLException{
     List<Ticket> openTickets = new ArrayList<>();
+    // @Code_Review: make status as enum
     String openTic = "SELECT * FROM tickets WHERE status = 'open' ";
     try (PreparedStatement opentickets = connection.prepareStatement(openTic)) {
         ResultSet rs = opentickets.executeQuery();
