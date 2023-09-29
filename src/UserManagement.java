@@ -1,8 +1,10 @@
+
+// @Code_Review: What is the use of keeping scanner as instance varible, better create and when needed
 import java.util.*;
 import java.sql.*;
+
 class UserManagement {
     private Connection connection;
-    // @Code_Review: What is the use of keeping scanner as instance varible, better create and when needed
     private Scanner scanner;
     private String username;
 
@@ -20,7 +22,7 @@ class UserManagement {
             System.out.println("3. Logout");
             System.out.print("Enter your choice: ");
             int userChoice = scanner.nextInt();
-            scanner.nextLine(); // Consume the newline character
+            scanner.nextLine();
 
             if (userChoice == 1) {
                 createTicket();
@@ -34,48 +36,45 @@ class UserManagement {
     }
 
     private void createTicket() {
-        System.out.println("Select product on which you want to create a ticket: ");
+        System.out.println("\nSelect product on which you want to create a ticket: ");
         System.out.println("1-'Electronics'");
         System.out.println("2-'Appliances'");
-        int productType = scanner.nextInt();
-        scanner.nextLine();
-        System.out.print("Enter ticket description: ");
+        String productType = scanner.nextLine();
+        System.out.print("\nEnter ticket description: ");
         String description = scanner.nextLine();
-    
-        try {
-            TicketCreds ticketcreds = new TicketCreds(connection);
-    
-            // @Code_Review: what if productType given is 3??
-            String product = (productType == 1) ? "Electronics" : "Appliances";
-    
-            // @Code_Review: what is the use of zero here and null?
-            Ticket ticket = new Ticket(0, username, description, "open", null, product);
-    
 
-            ticketcreds.createTicket(ticket);
-            
-            System.out.println("Ticket created successfully.");
+        // @Code_Review: what if productType given is 3?? -- Done
+        try {
+            TicketRequirements ticketrequirements = new TicketRequirements(connection);
+
+            if (productType.equals("1") || productType.equals("2")) {
+                String product = (productType.equals("1")) ? "Electronics" : "Appliances";
+                Ticket ticket = new Ticket(0, username, description, "open", null, product, null);
+
+                ticketrequirements.createTicket(ticket);
+
+                System.out.println("\nTicket created successfully.");
+            } else {
+                System.out.println("\nSelect valid product type");
+            }
         } catch (SQLException e) {
             e.printStackTrace();
         }
     }
-    
+
     private void viewTickets() {
-        System.out.println("Your Tickets:");
+        System.out.println("\nYour Tickets:");
         try {
-            TicketCreds ticketRepository = new TicketCreds(connection);
-            List<Ticket> userTickets = ticketRepository.getTicketsByUser(username);
+            TicketRequirements ticketrequirements = new TicketRequirements(connection);
+            List<Ticket> userTickets = ticketrequirements.getTicketsByUser(username);
 
             for (Ticket ticket : userTickets) {
-                System.out.println("Ticket ID: " + ticket.getId() + ", Description: " + ticket.getDescription() +
-                        ", Status: " + ticket.getStatus() + ", Resolution: " + ticket.getResolution() + ", Product: " +ticket.getProduct() + "\n");
+                System.out.println("\nTicket ID: " + ticket.getId() + ", Description: " + ticket.getDescription() +
+                        ", Status: " + ticket.getStatus() + ", Resolution: " + ticket.getResolution() + ", Product: "
+                        + ticket.getProduct() + "\n");
             }
         } catch (SQLException e) {
             e.printStackTrace();
         }
     }
 }
-
-
-
-
