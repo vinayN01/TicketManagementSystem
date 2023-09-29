@@ -34,6 +34,14 @@ The Ticket Management System is a project designed to efficiently handle and res
 
 - Resolvers can work on and resolve the assigned tickets.
 
+## Data Storage
+
+In this system, we utilize two main tables for data storage:
+
+- **Users Table**: This table stores user credentials, including usernames, passwords and roles.
+
+- **Tickets Table**: Here, we store ticket details, to track and manage user-raised tickets.
+
 ## Requirements
 
 To run the Ticket Management System, you will need the following:
