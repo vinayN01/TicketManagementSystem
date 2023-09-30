@@ -4,8 +4,8 @@ import java.util.Scanner;
 public class TicketManagementSystem {
     public static void main(String[] args) {
         try {
-            Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/ticket_system", "root",
-                    "Vinayreddy@1234");
+            Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/ticket_system", "Your_Username",
+                    "Password");
             Scanner scanner = new Scanner(System.in);
 
             System.out.println("\nWelcome to the Ticket Management System");
