@@ -1,3 +1,4 @@
+# Code_Review: You don't need to explain each and every module. Better explain it as an application like how it works, what are its limitations..
 # Ticket Management System
 
 ## Introduction
@@ -43,8 +44,10 @@ In this system, we utilize two main tables for data storage:
 - **Tickets Table**: Here, we store ticket details, to track and manage user-raised tickets.
 
 ## Requirements
-
+# Code_Review: You need to explain this section better. Like SQL is a language not a database so mention MySQL if it only supports that. Also mention which version of java is needed atleast.
 To run the Ticket Management System, you will need the following:
 
 - Java
 - SQL (for database operations)
+
+# Code_Review: Add a section on how to setup this application in their machine

@@ -1,10 +1,9 @@
-// @Code_Review: Format code properly -- Done
-
 import java.util.*;
 import java.sql.*;
 
 class ResolverManagement {
     private Connection connection;
+    //Code_Review Scanner is not needed as instance/class variables 
     private Scanner scanner;
     private String username;
 
@@ -26,6 +25,8 @@ class ResolverManagement {
             int resolverChoice = scanner.nextInt();
             scanner.nextLine();
 
+            //Code_Review Make this as switch case
+            //Code_Review Handle when invalid input is given like 6 or 7 or -1
             if (resolverChoice == 1) {
                 viewUnassignedTickets();
             } else if (resolverChoice == 2) {
@@ -50,6 +51,7 @@ class ResolverManagement {
                 System.out.println("\nThere is no any open tickets.");
             } else {
                 for (Ticket ticket : openTickets) {
+                    // Code_Review: Better to write a to_string method in Ticket call instead of doing this. Read about to_string in class
                     System.out.println("\nTicket ID: " + ticket.getId() + ", User: " + ticket.getUser()
                             + ", Description: "
                             + ticket.getDescription() +
@@ -71,6 +73,7 @@ class ResolverManagement {
                 System.out.println("\nThere are no assigned tickets.");
             } else {
                 for (Ticket ticket : openTickets) {
+                    // Code_Review: Better to write a to_string method in Ticket call instead of doing this. Read about to_string in class
                     System.out.println("\nTicket ID: " + ticket.getId() + ", User: " + ticket.getUser() +
                             ", Description: " + ticket.getDescription() +
                             ", Status: " + ticket.getStatus() + ", Product: " + ticket.getProduct() +
@@ -113,8 +116,10 @@ class ResolverManagement {
             TicketRequirements TicketRequirements = new TicketRequirements(connection);
             Ticket ticket = TicketRequirements.getTicketById(ticketId);
 
+            // Code_Review: Change status to enum...
             if (ticket != null && ticket.getStatus().equals("open") && ticket.getResolver() == null) {
                 TicketRequirements.updateTicketResolver(ticketId, username);
+                // Code_Review: add some more details here
                 System.out.println("\nAssigned.");
             } else {
                 System.out.println("\nCannot assign.");

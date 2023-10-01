@@ -1,5 +1,5 @@
 
-// @Code_Review: What is the use of keeping scanner as instance varible, better create and when needed
+// @Code_Review: What is the use of keeping scanner as instance variable, better create and when needed
 import java.util.*;
 import java.sql.*;
 

@@ -1,7 +1,7 @@
 import java.sql.*;
 
 /*
- * @Code_Review: choose better names, format code properly -- Done
+ * @Code_Review: choose better names...
 */
 class UserRequirements {
     private Connection connection;
