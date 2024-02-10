@@ -2,7 +2,6 @@ import java.sql.*;
 import java.util.*;
 
 class TicketRequirements {
-    // Code_Review: Write a singleton class and get connection when ever you need.
     private Connection connection;
 
     public TicketRequirements(Connection connection) {
@@ -32,7 +31,6 @@ class TicketRequirements {
 
     }
 
-    // Code_Review: I don't think throws is required when you are using try
     public Ticket getTicketById(int ticketid) throws SQLException {
         String ticketId = "SELECT * FROM tickets where id = ?";
         try (PreparedStatement tickets = connection.prepareStatement(ticketId)) {

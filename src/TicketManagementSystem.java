@@ -4,16 +4,14 @@ import java.util.Scanner;
 public class TicketManagementSystem {
     public static void main(String[] args) {
         try {
-            // Code_Review: Write a class to get connection... Should be a single ton class
-            // Code_Review: Also I think I said to move the strings to variables and use it here
-            Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/ticket_system", "Your_Username",
-                    "Password");
+           
+            Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/ticket_system", "your_username",
+                    "your_password");
             Scanner scanner = new Scanner(System.in);
 
             System.out.println("\nWelcome to the Ticket Management System");
 
             while (true) {
-                // Code_Review: Instead of using multiple prints create a multi line string and print it
                 System.out.println("\n1. Register");
                 System.out.println("2. Login");
                 System.out.println("3. Exit");
@@ -21,13 +19,11 @@ public class TicketManagementSystem {
                 int choice = scanner.nextInt();
                 scanner.nextLine();
 
-                // Code_Review: Better to make this switch case and handle invalid input case
                 if (choice == 1) {
                     registerUser(connection, scanner);
                 } else if (choice == 2) {
                     User user = loginUser(connection, scanner);
                     if (user != null) {
-                        // Code_Review: User types can be enum.. change it
                         if (user.getRole().equals("user")) {
                             UserManagement users = new UserManagement(connection, scanner, user.getUsername());
                             users.start();
@@ -48,7 +44,6 @@ public class TicketManagementSystem {
         }
     }
 
-    // Code_Review: don't pass scanner as params and also connection
     private static void registerUser(Connection connection, Scanner scanner) {
         System.out.println("\nSelect your role:");
         System.out.println("1. User");
@@ -76,7 +71,7 @@ public class TicketManagementSystem {
         }
     }
 
-    // Code_Review: don't pass scanner as params and also connection
+
     private static User loginUser(Connection connection, Scanner scanner) {
         System.out.print("\nEnter username: ");
         String username = scanner.nextLine();
@@ -98,3 +93,4 @@ public class TicketManagementSystem {
         return null;
     }
 }
+

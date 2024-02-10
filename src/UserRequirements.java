@@ -1,8 +1,5 @@
 import java.sql.*;
 
-/*
- * @Code_Review: choose better names...
-*/
 class UserRequirements {
     private Connection connection;
 

@@ -1,5 +1,4 @@
 
-// @Code_Review: What is the use of keeping scanner as instance variable, better create and when needed
 import java.util.*;
 import java.sql.*;
 
@@ -29,7 +28,6 @@ class UserManagement {
             } else if (userChoice == 2) {
                 viewTickets();
             } else if (userChoice == 3) {
-                // Logout
                 break;
             }
         }
@@ -43,7 +41,6 @@ class UserManagement {
         System.out.print("\nEnter ticket description: ");
         String description = scanner.nextLine();
 
-        // @Code_Review: what if productType given is 3?? -- Done
         try {
             TicketRequirements ticketrequirements = new TicketRequirements(connection);
 

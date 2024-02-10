@@ -1,13 +1,10 @@
 class Ticket {
     private int id;
-    // Code_Review: what is this username or ??
     private String user;
     private String description;
-    // Code_Review: this can be enum type
     private String status;
     private String resolution;
     private String product;
-    // Code_Review: Resolver id or name?? if resolver id then make this integer type
     private String resolver;
 
     public Ticket(int id, String user, String description, String status, String resolution, String product,
