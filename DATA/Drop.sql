@@ -1,0 +1,1 @@
+DROP DATABASE ticket_system;
