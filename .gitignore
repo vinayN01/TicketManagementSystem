@@ -1,2 +1,0 @@
-# @Code_Review: use this file to remove unwanted files like bin dir. check how to use in google
-# What happened to bin file?? If you are manually deleting it or not commiting it... It better to add the files which you don't need in git repo here

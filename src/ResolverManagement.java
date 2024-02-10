@@ -34,7 +34,6 @@ class ResolverManagement {
             } else if (resolverChoice == 4) {
                 resolveTicket();
             } else if (resolverChoice == 5) {
-                // Logout
                 break;
             }
         }
